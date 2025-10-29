@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="poly402banner.png" alt="poly402 Banner">
+</p>
+
 # poly402
 
 **Programmatic Prediction Market Trading via HTTP Payment Protocol**
