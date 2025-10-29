@@ -49,9 +49,9 @@ This implementation demonstrates a novel cross-chain payment verification model 
         └─────────────────────────────────────┘
                  │                    │
         ┌────────▼────────┐  ┌────────▼────────┐
-        │  Payment Layer   │  │  Trading Layer  │
-        │    (x402)        │  │  (Polymarket)   │
-        └──────────────────┘  └──────────────────┘
+        │  Payment Layer  │  │  Trading Layer  │
+        │    (x402)       │  │  (Polymarket)   │
+        └─────────────────┘  └─────────────────┘
                  │                    │
         ┌────────▼────────┐  ┌────────▼────────┐
         │  Base Network   │  │ Polygon Network │
