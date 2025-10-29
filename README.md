@@ -177,38 +177,38 @@ This implementation demonstrates a novel cross-chain payment verification model 
 ## Network Topology
 
 ```
-┌────────────────────────────────────────────────────────────┐
-│                   Base Network (EVM)                        │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  x402 Protocol Layer                                  │  │
-│  │  - CDP Facilitator                                    │  │
-│  │  - Fee-free USDC settlements                          │  │
-│  │  - HTTP 402 Payment Required mechanism               │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  User Wallet (USDC Balance)                          │  │
-│  │  - Signs payment authorizations                       │  │
-│  │  - Maintains USDC for x402 payments                  │  │
-│  └──────────────────────────────────────────────────────┘  │
-└────────────────────────────────────────────────────────────┘
-                            │
-                            │ Cross-chain coordination
-                            │ (orchestrated by poly402)
-                            │
-┌────────────────────────────────────────────────────────────┐
-│                  Polygon Network (EVM)                      │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  Polymarket CLOB                                      │  │
-│  │  - Central Limit Order Book                           │  │
-│  │  - Conditional Token Framework (CTF)                  │  │
-│  │  - Order matching and settlement                      │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  User Wallet/Proxy (USDC Balance)                    │  │
-│  │  - Signs trade orders                                 │  │
-│  │  - Holds position tokens                              │  │
-│  └──────────────────────────────────────────────────────┘  │
-└────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│                  Base Network (EVM)                       │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │  x402 Protocol Layer                                │  │
+│  │  - CDP Facilitator                                  │  │
+│  │  - Fee-free USDC settlements                        │  │
+│  │  - HTTP 402 Payment Required mechanism             │  │
+│  └────────────────────────────────────────────────────┘  │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │  User Wallet (USDC Balance)                        │  │
+│  │  - Signs payment authorizations                     │  │
+│  │  - Maintains USDC for x402 payments                │  │
+│  └────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────┘
+                           │
+                           │ Cross-chain coordination
+                           │ (orchestrated by poly402)
+                           │
+┌──────────────────────────────────────────────────────────┐
+│                 Polygon Network (EVM)                     │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │  Polymarket CLOB                                    │  │
+│  │  - Central Limit Order Book                         │  │
+│  │  - Conditional Token Framework (CTF)                │  │
+│  │  - Order matching and settlement                    │  │
+│  └────────────────────────────────────────────────────┘  │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │  User Wallet/Proxy (USDC Balance)                  │  │
+│  │  - Signs trade orders                               │  │
+│  │  - Holds position tokens                            │  │
+│  └────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ## Features
