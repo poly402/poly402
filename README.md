@@ -18,13 +18,13 @@ This implementation demonstrates a novel cross-chain payment verification model 
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                          poly402 CLI                              │
-│                                                                    │
-│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐   │
-│  │   Market     │      │     x402     │      │  Polymarket  │   │
-│  │   Parser     │──────│   Payment    │──────│    Client    │   │
-│  │              │      │   Handler    │      │              │   │
-│  └──────────────┘      └──────────────┘      └──────────────┘   │
+│                          poly402 CLI                             │
+│                                                                  │
+│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐    │
+│  │   Market     │      │     x402     │      │  Polymarket  │    │
+│  │   Parser     │──────│   Payment    │──────│    Client    │    │
+│  │              │      │   Handler    │      │              │    │
+│  └──────────────┘      └──────────────┘      └──────────────┘    │
 │         │                     │                      │           │
 └─────────┼─────────────────────┼──────────────────────┼───────────┘
           │                     │                      │
@@ -40,12 +40,12 @@ This implementation demonstrates a novel cross-chain payment verification model 
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                       User's Execution Context                    │
+│                       User's Execution Context                   │
 └──────────────────────────────────────────────────────────────────┘
                                │
                                ▼
          ┌─────────────────────────────────────┐
-         │         poly402 Orchestrator         │
+         │         poly402 Orchestrator        │
          └─────────────────────────────────────┘
                   │                    │
          ┌────────▼────────┐  ┌────────▼────────┐
@@ -63,28 +63,25 @@ This implementation demonstrates a novel cross-chain payment verification model 
 ## Payment Flow Sequence
 
 ```
-User                 poly402               x402            Polymarket
- │                     │                    │                   │
- │──trade command─────▶│                    │                   │
- │                     │                    │                   │
- │                     │──fetch market data────────────────────▶│
- │                     │◀──────market info─────────────────────│
- │                     │                    │                   │
- │                     │──payment request──▶│                   │
- │                     │  (verify amount)   │                   │
- │                     │                    │                   │
- │                     │◀─402 Payment Req───│                   │
- │                     │                    │                   │
- │                     │──create payment───▶│                   │
- │                     │  (header signed)   │                   │
- │                     │                    │                   │
- │                     │◀─payment confirmed─│                   │
- │                     │                    │                   │
- │                     │──execute trade────────────────────────▶│
- │                     │  (signed order)    │                   │
- │                     │                    │                   │
- │                     │◀─trade confirmation───────────────────│
- │◀─success + details─│                    │                   │
+User              poly402            x402           Polymarket
+ │                  │                 │                  │
+ │──trade cmd──────▶│                 │                  │
+ │                  │                 │                  │
+ │                  │──fetch data────────────────────────▶│
+ │                  │◀───market info─────────────────────│
+ │                  │                 │                  │
+ │                  │──pay request───▶│                  │
+ │                  │                 │                  │
+ │                  │◀─402 Required──│                  │
+ │                  │                 │                  │
+ │                  │──create pay────▶│                  │
+ │                  │                 │                  │
+ │                  │◀─pay confirm───│                  │
+ │                  │                 │                  │
+ │                  │──execute trade─────────────────────▶│
+ │                  │                 │                  │
+ │                  │◀─confirmation──────────────────────│
+ │◀─success────────│                 │                  │
 ```
 
 ## Trade Execution Flow
@@ -165,38 +162,38 @@ User                 poly402               x402            Polymarket
 ## Network Topology
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                     Base Network (EVM)                        │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  x402 Protocol Layer                                   │  │
-│  │  - CDP Facilitator                                     │  │
-│  │  - Fee-free USDC settlements                           │  │
-│  │  - HTTP 402 Payment Required mechanism                │  │
-│  └───────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  User Wallet (USDC Balance)                           │  │
-│  │  - Signs payment authorizations                        │  │
-│  │  - Maintains USDC for x402 payments                   │  │
-│  └───────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────┘
-                             │
-                             │ Cross-chain coordination
-                             │ (orchestrated by poly402)
-                             │
-┌──────────────────────────────────────────────────────────────┐
-│                    Polygon Network (EVM)                      │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  Polymarket CLOB                                       │  │
-│  │  - Central Limit Order Book                            │  │
-│  │  - Conditional Token Framework (CTF)                   │  │
-│  │  - Order matching and settlement                       │  │
-│  └───────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  User Wallet/Proxy (USDC Balance)                     │  │
-│  │  - Signs trade orders                                  │  │
-│  │  - Holds position tokens                               │  │
-│  └───────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│                      Base Network (EVM)                        │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  x402 Protocol Layer                                    │  │
+│  │  - CDP Facilitator                                      │  │
+│  │  - Fee-free USDC settlements                            │  │
+│  │  - HTTP 402 Payment Required mechanism                 │  │
+│  └────────────────────────────────────────────────────────┘  │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  User Wallet (USDC Balance)                            │  │
+│  │  - Signs payment authorizations                         │  │
+│  │  - Maintains USDC for x402 payments                    │  │
+│  └────────────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────┘
+                              │
+                              │ Cross-chain coordination
+                              │ (orchestrated by poly402)
+                              │
+┌───────────────────────────────────────────────────────────────┐
+│                     Polygon Network (EVM)                      │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  Polymarket CLOB                                        │  │
+│  │  - Central Limit Order Book                             │  │
+│  │  - Conditional Token Framework (CTF)                    │  │
+│  │  - Order matching and settlement                        │  │
+│  └────────────────────────────────────────────────────────┘  │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  User Wallet/Proxy (USDC Balance)                      │  │
+│  │  - Signs trade orders                                   │  │
+│  │  - Holds position tokens                                │  │
+│  └────────────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────┘
 ```
 
 ## Features

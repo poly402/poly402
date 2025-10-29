@@ -55,9 +55,18 @@ class ConfigManager:
         with open(self.config_path, 'r') as f:
             data = json.load(f)
         
+        # Validate required configuration keys
+        self._validate_config_structure(data)
+        
         # Support environment variables override
         base_key = os.getenv('POLY402_BASE_KEY') or data['networks']['base']['wallet_private_key']
         polygon_key = os.getenv('POLY402_POLYGON_KEY') or data['networks']['polygon']['wallet_private_key']
+        
+        # Validate private keys format
+        if base_key and not base_key.startswith('0x'):
+            raise ValueError("Base network private key must start with '0x'")
+        if polygon_key and not polygon_key.startswith('0x'):
+            raise ValueError("Polygon network private key must start with '0x'")
         
         return Config(
             base_private_key=base_key,
@@ -86,6 +95,22 @@ class ConfigManager:
         """Create default configuration file"""
         self.save(self.DEFAULT_CONFIG)
         return self.config_path
+    
+    def _validate_config_structure(self, data: dict):
+        """Validate configuration file structure"""
+        required_keys = ['networks', 'polymarket', 'x402']
+        for key in required_keys:
+            if key not in data:
+                raise ValueError(f"Missing required configuration section: {key}")
+        
+        # Validate network configs
+        for network in ['base', 'polygon']:
+            if network not in data['networks']:
+                raise ValueError(f"Missing network configuration: {network}")
+            
+            network_config = data['networks'][network]
+            if 'rpc_url' not in network_config or 'chain_id' not in network_config:
+                raise ValueError(f"Invalid {network} network configuration")
     
     def exists(self) -> bool:
         """Check if configuration file exists"""
