@@ -1,0 +1,36 @@
+{
+  "name": "poly402",
+  "version": "1.0.0",
+  "description": "x402 payment handler for poly402 CLI",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "x402",
+    "polymarket",
+    "prediction-markets",
+    "payments",
+    "crypto"
+  ],
+  "author": "poly402",
+  "license": "MIT",
+  "dependencies": {
+    "@coinbase/x402": "^0.1.0",
+    "x402-fetch": "^0.1.0",
+    "x402-axios": "^0.1.0",
+    "viem": "^2.0.0",
+    "@scure/base": "^1.1.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.1.0"
+  }
+}
