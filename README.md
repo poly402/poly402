@@ -63,9 +63,9 @@ This implementation demonstrates a novel cross-chain payment verification model 
 ## Payment Flow Sequence
 
 ```
-┌──────┐         ┌─────────┐      ┌──────┐      ┌────────────┐
-│ User │         │ poly402 │      │ x402 │      │ Polymarket │
-└──┬───┘         └────┬────┘      └──┬───┘      └─────┬──────┘
+┌──────┐         ┌─────────┐       ┌──────┐      ┌────────────┐
+│ User │         │ poly402 │       │ x402 │      │ Polymarket │
+└──┬───┘         └────┬────┘       └──┬───┘      └─────┬──────┘
    │                  │               │                │
    │  Trade Request   │               │                │
    ├─────────────────>│               │                │
