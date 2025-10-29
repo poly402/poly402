@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="poly402banner.png" alt="poly402 Banner">
+  <img src="poly402bannerv2.png" alt="poly402 Banner">
 </p>
 
 # poly402
