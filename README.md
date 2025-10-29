@@ -196,17 +196,17 @@ This implementation demonstrates a novel cross-chain payment verification model 
                           │ (orchestrated by poly402)
                           │
 ┌────────────────────────────────────────────────────────┐
-│                Polygon Network (EVM)                    │
+│                Polygon Network (EVM)                   │
 │  ┌──────────────────────────────────────────────────┐  │
-│  │  Polymarket CLOB                                  │  │
-│  │  - Central Limit Order Book                       │  │
-│  │  - Conditional Token Framework (CTF)              │  │
-│  │  - Order matching and settlement                  │  │
+│  │  Polymarket CLOB                                 │  │
+│  │  - Central Limit Order Book                      │  │
+│  │  - Conditional Token Framework (CTF)             │  │
+│  │  - Order matching and settlement                 │  │
 │  └──────────────────────────────────────────────────┘  │
 │  ┌──────────────────────────────────────────────────┐  │
 │  │  User Wallet/Proxy (USDC Balance)                │  │
-│  │  - Signs trade orders                             │  │
-│  │  - Holds position tokens                          │  │
+│  │  - Signs trade orders                            │  │
+│  │  - Holds position tokens                         │  │
 │  └──────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────┘
 ```
