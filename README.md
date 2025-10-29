@@ -178,16 +178,16 @@ This implementation demonstrates a novel cross-chain payment verification model 
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│                 Base Network (EVM)                      │
+│                 Base Network (EVM)                     │
 │  ┌──────────────────────────────────────────────────┐  │
-│  │  x402 Protocol Layer                              │  │
-│  │  - CDP Facilitator                                │  │
-│  │  - Fee-free USDC settlements                      │  │
+│  │  x402 Protocol Layer                             │  │
+│  │  - CDP Facilitator                               │  │
+│  │  - Fee-free USDC settlements                     │  │
 │  │  - HTTP 402 Payment Required mechanism           │  │
 │  └──────────────────────────────────────────────────┘  │
 │  ┌──────────────────────────────────────────────────┐  │
 │  │  User Wallet (USDC Balance)                      │  │
-│  │  - Signs payment authorizations                   │  │
+│  │  - Signs payment authorizations                  │  │
 │  │  - Maintains USDC for x402 payments              │  │
 │  └──────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────┘
